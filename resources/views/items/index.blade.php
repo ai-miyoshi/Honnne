@@ -5,7 +5,7 @@
 
 <h1>アイテム一覧</h1>
 @foreach ($items as $item)
-<a href="/item/{{ $item->id }}"> <!-- ルーティングにid渡す -->
+<a href="/items/{{ $item->id }}"> <!-- ルーティングにid渡す -->
   <ul>
     <li>{{ $item->name }}</li>
     <li><img src="/image/{{ $item->image }}" alt="..." class=""></li>

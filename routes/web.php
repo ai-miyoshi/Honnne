@@ -19,7 +19,11 @@ Auth::routes();
 // 上記についてきたやつ
 Route::get('/home', 'HomeController@index');
 
-// アイテム一覧表示
+// アイテム一覧
 Route::get('/items', 'ItemsController@index');
-// アイテム個別ページ
-Route::get('/item/{id}', 'ItemsController@show');
+
+// アイテム一覧＋レビュー一覧
+Route::get('/items/{id}', 'ItemsController@show');
+
+// レビュー投稿
+Route::post('/reviews', 'ReviewsController@create');
