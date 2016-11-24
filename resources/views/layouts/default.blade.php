@@ -10,12 +10,34 @@
     <!-- タイトル -->
     <title>@yield('title')</title>
     <!-- スタイルシート -->
-    <link rel="stylesheet" href="/css/style.css">
+    <!-- default.blade.phpのシート -->
+    <link rel="stylesheet" href="/css/default.css">
     <!-- fontawesome -->
     <script src="https://use.fontawesome.com/34d33137ab.js"></script>
   </head>
+
   <body>
     <header>
+      <div class="header-logo">
+        <h1 class="top">歯医者の本音</h1>
+        <p class="bottom">歯医者による歯医者のための情報サイト</p>
+      </div>
+
+      <div class="header-search">
+        <form>
+          <input type="text" name="search" value="" class="form header-form">
+          <input type="submit" value="検索" class="btn">
+        </form>
+      </div>
+
+      <div class="header-right">
+        <ul>
+          <li><a href="/login" class="rogin">ログイン<a></li>
+          <li><a href="/register" class="rogin">新規登録<a></li>
+          <li><a href="" class="rogin">閲覧履歴<a></li>
+          <li><a href="" class="rogin">ご利用ガイド<a></li>
+        </ul>
+      </div>
     </header>
 
     <div class="container">
