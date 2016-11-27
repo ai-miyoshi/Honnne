@@ -13,4 +13,8 @@ class Item extends Model
     public function review() {
       return $this->hasMany('App\Review');
     }
+    // item->category
+    public function category() {
+      return $this->belongsTo('App\Category');
+    }
 }

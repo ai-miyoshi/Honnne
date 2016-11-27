@@ -1,3 +1,4 @@
+/*all*/
 * {
   padding: 0;
   margin: 0;
@@ -10,7 +11,7 @@ ul {
 }
 li {
   display: inline-block;
-  font-size: 12px;
+  font-size: 16px;
 }
 .form {
 
@@ -25,21 +26,57 @@ li {
   color:#111;
   padding: 3px 13px 3px 13px;
 }
+
+.container {
+  width: 1170px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.pointer {
+  cursor: pointer;
+}
+.pointer:hover {
+  text-decoration: underline;
+}
+
+/*.btn {
+  padding: 8px 24px;
+  color: white;
+  display: inline-block;
+  opacity: 0.8;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 1;
+}*/
+
+
+/*all*/
+
 /*   HEADER  START  */
 header{
-  background-color: #6495ed;
+  background-color: #ffffff;
   text-align: center;
+  border-bottom: solid 1px gray;
 }
 
 .header-logo {
   float: left;
   width: 30%;
 }
-.header-logo h1, p {
-  color: #f5f5f5;
+.header-logo,.top,.bottom {
+  color: #696969;
   font-weight: lighter;
 }
 
+/*Search form*/
 .header-search {
   float: left;
   height: 82px;
@@ -49,25 +86,284 @@ header{
   line-height: 82px;
 }
 .header-search .header-form {
-  height: 30px;
+  height: 32px;
   width: 300px;
   font-size: 15px;
+  border-radius: 20px 0 20px 0;
+  padding-left: 34px;
+  outline: none;
+  border: solid 1px #778899;
+  box-shadow: none;
 }
+.header-search .search-btn {
+  background-position: 13px 6px;
+  background-image: url(/image/search.png);
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  width: 34px;
+  height: 28px;
+  border: none;
+  position: absolute;
+  top: 24px;
+  left: 617px;
+  outline: none;
+  background-color: transparent;
+}
+/*Search form*/
 
+/*ナビ*/
 .header-right {
   height: 82px;
 }
+.header-right .pointer:hover {
+  background-color: #fffff0;
+}
 
 .header-right li {
-  /*background-color: blue;*/
   line-height: 82px;
   padding: 0 8px 0 8px;
   font-size: 13px;
 }
+/*ナビ*/
 
 header:after {
   content: "";
   display: block;
   clear: both;
 }
-/*    HEADER END  */
+/*   HEADER END  */
+
+
+/*モーダル*/
+.signup-modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: none;
+}
+.login-modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 20%;
+  left: 34%;
+  background-color: #e6ecf0;
+  padding: 20px 0 40px;
+  border-radius: 10px;
+  width: 450px;
+  height: auto;
+  text-align: center;
+}
+
+.fa-times {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: rgba(128, 128, 128, 0.46);
+  cursor: pointer;
+}
+
+#signup-form {
+  width: 100%;
+}
+
+#signup-form h2 {
+  color: #5f5d60;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+#signup-form input {
+  width: 320px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  padding: 12px 12px;
+  border: 1px solid #d0d5d8;
+  border-radius: 5px;
+}
+
+#submit-btn {
+  display: inline-block;
+  padding: 14px 140px;
+  background-color: #5dca88;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+
+/*   footer START  */
+footer {
+  text-align: center;
+  margin-top: 30px;
+  border-top: solid 1px gray;
+  background-color: gray;
+}
+/*   footer END  */
+
+
+
+
+
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
+
+/*   defaule.blade.php START  */
+
+/*rating star start*/
+.rating {
+  float: left;
+  border: none;
+}
+
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-family: FontAwesome;
+    font-size:18px;
+    color:#ddd;
+}
+
+.rating:not(:checked) > label:before {
+    content: "\f005";
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+form:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+/*form:after {
+  content: "";
+  display: block;
+  clear: both;
+}*/
+/*rating star end*/
+
+/*   defaule.blade.php END  */
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
+
+
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
+
+
+
+@charset "UTF-8";
+.rate {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 16px;
+  font-size: 16px;
+}
+.rate:before, .rate:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: FontAwesome;
+  content: '★★★★★';
+  display: inline-block;
+  height: 16px;
+  line-height: 16px;
+}
+.rate:before {
+  color: #ddd;
+}
+.rate:after {
+  color: #ffa500;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.rate0:after {
+  width: 0;
+}
+
+.rate1:after {
+  width: 16px;
+}
+
+.rate1-5:after {
+  width: 24px;
+}
+
+.rate2:after {
+  width: 32px;
+}
+
+.rate2-5:after {
+  width: 40px;
+}
+
+.rate3:after {
+  width: 48px;
+}
+
+.rate3-5:after {
+  width: 56px;
+}
+
+.rate4:after {
+  width: 64px;
+}
+
+.rate4-5:after {
+  width: 72px;
+}
+
+.rate5:after {
+  width: 80px;
+}
+
+.wrap {
+  width: 80px;
+  margin: 0 auto;
+}
