@@ -11,7 +11,7 @@ article {
   height: 900px;
 }
 .items-box {
-  width: 690px;
+  width: 780px;
   height: 600px;
   border: solid 1px yellow;
   box-sizing:border-box;
@@ -60,7 +60,7 @@ article {
 sidebar {
   float: left;
   height: 500px;
-  width: 240px;
+  width: 190px;
   border: solid 1px red;
   box-sizing:border-box;
 }
