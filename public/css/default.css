@@ -44,6 +44,10 @@ li {
   text-decoration: underline;
 }
 
+section {
+  border: solid 1px green; 
+}
+
 /*.btn {
   padding: 8px 24px;
   color: white;

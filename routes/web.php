@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 // アイテム一覧
-Route::get('/categories/{id}', 'ItemsController@index');
+Route::get('/categories/{id}', 'CategoriesController@show');
 
 // アイテム一覧＋レビュー一覧
 Route::get('/items/{id}', 'ItemsController@show');

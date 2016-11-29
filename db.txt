@@ -1,0 +1,220 @@
+-- MySQL dump 10.13  Distrib 5.6.28, for osx10.9 (x86_64)
+--
+-- Host: localhost    Database: Honnne
+-- ------------------------------------------------------
+-- Server version	5.6.28
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categories` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (1,'歯冠材料','2016-11-24 10:43:30','2016-11-24 10:43:30','category1.jpg'),(2,'診療機械,装置','2016-11-24 10:44:19','2016-11-24 10:44:19','category2.jpg'),(3,'合着,接着,充填材料','2016-11-24 10:44:58','2016-11-24 10:44:58','category3.jpg'),(4,'歯科用ユニット','2016-11-27 03:06:34','2016-11-27 03:06:34','category4.jpg'),(5,'根管充填材料','2016-11-27 03:07:10','2016-11-27 03:07:10','category5.jpg'),(6,'診療用器具','2016-11-27 03:07:35','2016-11-27 03:07:35','category6.jpg'),(7,'義歯床材料','2016-11-27 03:08:06','2016-11-27 03:08:06','category7.jpg'),(8,'印象材','2016-11-27 03:08:29','2016-11-27 03:08:29','category8.jpg');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `comments`
+--
+
+DROP TABLE IF EXISTS `comments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `comments` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `body` text COLLATE utf8_unicode_ci NOT NULL,
+  `review_id` int(10) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comments`
+--
+
+LOCK TABLES `comments` WRITE;
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (1,'レビュー７へのコメント;','MCL？へのコメントテスト',7,'2016-11-25 11:15:18','2016-11-25 11:15:18'),(2,'sdfg','asdfghg',1,'2016-11-25 12:02:43','2016-11-25 12:02:43'),(3,'sdfg','asdfghg',1,'2016-11-25 12:03:00','2016-11-25 12:03:00');
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `items`
+--
+
+DROP TABLE IF EXISTS `items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `items` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `info` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `category_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `items`
+--
+
+LOCK TABLES `items` WRITE;
+/*!40000 ALTER TABLE `items` DISABLE KEYS */;
+INSERT INTO `items` VALUES (1,'ＭＩコアＬＣ','ga5gaMMklNN4.jpg','ライトキュア（光重合）タイプのレジンコア材','2016-11-23 04:50:53','2016-11-23 04:50:53',3),(2,'G-マルチプライマー','3uLf6XZJd2XJ.jpg','リン酸エステル系モノマー「MDP※」、チオリン酸エステル系モノマー「MDTP」、シランカップリング剤「γ-MPTS」を配合、すべてのマテリアルに対応し簡便で強固な接着を実現する1液性のプライマー','2016-11-23 04:52:55','2016-11-23 04:52:55',3),(3,'G-ライトプリマⅡ Plus','RvAtwBc242rv.jpg','ハイパワーLED照射で、わずか3秒からのスピード重合。安心して使用するための光出力チェック機能や部位によって使い分けできるファイバーロッドが追加','2016-11-23 04:56:04','2016-11-23 04:56:04',2),(6,'グラディアフォルテ','uTFuprJHTo7T.jpg','ナノフィラー（超微粒子シリカ）を均一に分散配置させたことで、厳しい口腔内環境にさらされるクラウンで最も要求させる強度、耐摩耗性、ツヤの維持性などの耐久性を','2016-11-24 12:55:18','2016-11-24 12:55:18',1),(7,'ユニファスト III','z26JGMdxAM8A.jpg','ポリマー配合バランスの最適化とポリマー加工技術「SURFテクノロジー」により、高い操作性・物性・審美性を持つ','2016-11-27 11:35:53','2016-11-27 11:35:53',1),(8,'ディアーナ','mMq9OW0USX3N.jpg','「セルフシャイニング効果」、各種物性の向上などこれまでの保険用硬質レジンにはなかった数々の特長を実現','2016-11-27 11:36:59','2016-11-27 11:36:59',1),(9,'グラディアガム','bsKZTlla7zwZ.jpg','天然歯の歯肉に多く見られるオレンジ、ピンク系の色調を中心に設計した歯肉色用硬質レジン','2016-11-27 11:38:16','2016-11-27 11:38:16',1),(10,'プロシモ','lUWAThHyiaRb.jpg','オパール性を抑えて設計しているため、天然歯に近い自然な色調表現が可能。','2016-11-27 11:42:10','2016-11-27 11:42:10',1),(11,'フィクスピード','RIIRItBTco0k.jpg','収縮が少なく、寸法安定性も良好な口腔内固定用常温重合レジン','2016-11-27 11:43:50','2016-11-27 11:43:50',1),(12,'イオムレガロ','wEKbTEPnDdZq.jpg','人間工学に基づいた人にやさしい有機的なデザインと、診療形態の多様性を追求したイオムシリーズ','2016-11-27 11:46:09','2016-11-27 11:46:09',4),(13,'イオムレガロスマート','Vr5yhdiz6How.jpg','人間工学に基づいた人にやさしい有機的なデザインと、診療形態の多様性を追求したイオムシリーズ','2016-11-27 11:47:09','2016-11-27 11:47:09',4),(14,'レフィーノ','y7q9MldQNJCk.jpg','美しさや快適さに先進技術を調和させ、空間をともにするすべての方の快適さを追求した歯科用ユニット','2016-11-27 11:47:51','2016-11-27 11:47:51',4),(15,'プランメカソヴリン','wLZsGfvjgtCo.jpg','プランメカ社の最上級グレードの歯科ユニット','2016-11-27 11:48:38','2016-11-27 11:48:38',4),(16,'Gコンパクトiタッチ','スクリーンショット 2016-11-27 20.48.53.png','プランメカ社の衛星生に優れた歯科ユニット','2016-11-27 11:51:23','2016-11-27 11:51:23',4),(17,'ルアーナ','Fbh46DySyIyu.jpg','治療はもちろんメインテナンスやホワイトニングなど、幅広く使用できる多彩な機能が搭載可能','2016-11-27 11:52:17','2016-11-27 11:52:17',4);
+/*!40000 ALTER TABLE `items` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations`
+--
+
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` VALUES (4,'2014_10_12_000000_create_users_table',1),(5,'2014_10_12_100000_create_password_resets_table',1),(6,'2016_11_22_220237_create_items_table',1),(10,'2016_11_23_160427_create_reviews_table',2),(11,'2016_11_23_172935_add_score_to_reviews_table',3),(12,'2016_11_24_192817_create_categories_table',4),(13,'2016_11_24_193317_add_category_id_to_items_table',5),(14,'2016_11_25_194029_create_comments_table',6),(15,'2016_11_27_115433_add_image_to_categories_table',7);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`),
+  KEY `password_resets_token_index` (`token`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+LOCK TABLES `password_resets` WRITE;
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reviews`
+--
+
+DROP TABLE IF EXISTS `reviews`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reviews` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `body` text COLLATE utf8_unicode_ci NOT NULL,
+  `item_id` int(10) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `score` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reviews`
+--
+
+LOCK TABLES `reviews` WRITE;
+/*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
+INSERT INTO `reviews` VALUES (1,'asd','asdfg',1,'2016-11-23 09:40:32','2016-11-23 09:40:32',1),(2,'bbb','test',1,'2016-11-23 09:41:19','2016-11-23 09:41:19',1),(4,'a','a',2,'2016-11-24 07:10:38','2016-11-24 07:10:38',1),(5,'test','aあっっｓ',2,'2016-11-24 07:33:51','2016-11-24 07:33:51',1),(6,'使いやすい','プリマ使いやすいよ',3,'2016-11-24 12:13:24','2016-11-24 12:13:24',5),(7,'うーん','MIコアLCのれびゅー',1,'2016-11-24 12:13:53','2016-11-24 12:13:53',1),(8,'グラディア','グラディアのレビュー',6,'2016-11-24 12:56:31','2016-11-24 12:56:31',1),(9,'テスト','スコアのテスト',1,'2016-11-24 13:58:24','2016-11-24 13:58:24',3),(10,'テストs手嘘','ぷりまぷりま',3,'2016-11-25 08:10:16','2016-11-25 08:10:16',4),(11,'sadfgh','dsafsgdhfjggdfds',3,'2016-11-25 08:11:20','2016-11-25 08:11:20',5),(12,'おいいおsfkjdfk','ｌｄｋｆじゃｄｆ',3,'2016-11-25 08:16:12','2016-11-25 08:16:12',3),(13,'愛用中','盛り上げし易いちょうどいい稠度です。',1,'2016-11-25 12:18:52','2016-11-25 12:18:52',5);
+/*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'kenzo','kenzo.nishizawa@codecamp.jp','$2y$10$.xCzRGG9CtRNQ1FyFmdfeuOHA3PWOkFYLHzMJImsl.5YHHo18H7km','9icUXkmXbofYno2rtxkAc9m22QjUi2E8x3dx4bUSyfIcvMjWaXKEtlLk5jCY','2016-11-24 10:12:16','2016-11-26 03:40:52'),(2,'ai','martyaiai@gmail.com','$2y$10$KQRKTSJt8CirG2vDqSDsT.ks0gZoO0fCdkNdUe/mtZZE/sYKZ2M3a','yXlzUZH6Q9OmDAYipX8WghKc3kUf7AP0jfD4lxlVkHPK1s9zmUdUHzHhMo2B','2016-11-26 03:41:35','2016-11-26 06:30:05'),(3,'yuki','yukiyuki@yukiyuki.com','$2y$10$4RV.a7XXmsVCIMZFsBjTq.2D3QTj5S5dx5lZ6bM9VoCIWNE3v2l76','jh0WpcUbacum0KeNnYGSw47Oq4dLLnH7tAfZjm1YAHE4DNU9C5ZI2UUhnkRi','2016-11-26 05:51:13','2016-11-26 06:00:27'),(4,'asdf','adfa@adfa.ada','$2y$10$tMgwX0lOKjn/CEpcXnEgruUoYcD7tjeqqp6dGEbul5zPZNxu5X7zO','yYYtYAvDMiwHi5MNkk2AIQYhopxBPvE4i3JDCdOOvv8qyr3MOEg2WyQlNmKE','2016-11-26 06:01:21','2016-11-26 06:01:49'),(5,'aaaa','asd@asd.asd','$2y$10$l1rE0YzXiQPKBtAwcZGDeOLorliyFWLIo8.oDizcWBwSlrISUP.KO','4UldCFVKVTaC6SFfggPuzSxebkPqTg8X7h2ru2p59JN2AcvB4u4ZP0UjPcW1','2016-11-26 06:02:10','2016-11-26 06:04:03'),(6,'asdasd','addaf@adfa.ccom','$2y$10$SQn4Gj4Lhw16q/tUxeDen.JqYrg5aYi6dJRKWNrNxOK1SUXwa78qK','F7RkMmSJypdifd7Y96jNnlNu6yLQbr47FhU58OO69oo4Xxuxzudq1jGaZ2Uw','2016-11-26 06:04:32','2016-11-26 06:06:04');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-11-28 19:50:23

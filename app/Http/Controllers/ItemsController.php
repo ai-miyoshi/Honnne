@@ -12,17 +12,7 @@ use App\Review;
 
 class ItemsController extends Controller
 {
-    //アイテム一覧表示アクション
-    public function index($id) {
-      //カテゴリテーブルから$idに対応した行を取得
-      $category = Category::findOrFail($id);
 
-      // $categoryに紐付いているitemsの取得
-      $items = $category->items;
-
-      // viewに$catogoryと$itemsを渡し、移動
-      return view('items.index')->with(['category' => $category, 'items' => $items]);
-      }
 
 
     // アイテム個別ページ + レビュー一覧表示+レビューへのコメント表示アクション

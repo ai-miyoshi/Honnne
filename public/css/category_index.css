@@ -14,11 +14,14 @@
   font-size: 18px;
 }
 .category-box {
-  /*border: solid 1px blue;*/
+  border: solid 1px blue;
   width: 70%;
   float: left;
 }
-.category-box a {
+.category-boxs {
+  text-align: center;
+}
+.category-boxs a {
   width: 240px;
   height: 70px;
   margin: 0 10px 10px 0;
@@ -29,7 +32,7 @@
   display: flex;
   align-items: center;
 }
-.category-box ul::after {
+.category-boxs ul::after {
   content: "";
   display: block;
   clear: both;
@@ -47,15 +50,15 @@
   clear: both;
 }
 
-
+.category-sidebar {
+  width: 340px;
+}
 .category-sidebar ul {
   border: solid 1px gray;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
-  padding: 5px 0 10px 20px;
-  width: 280px;
+  paddin-left: 15px;
 }
 .category-sidebar p {
   font-size: 16px;

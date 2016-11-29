@@ -22,48 +22,16 @@
 <sidebar>
     <div class="sidebar-block">
         <div class="small-title">
-            <h2>カテゴリ</h2>
+          <p>カテゴリ一覧</p>
         </div>         <!-- カテゴリ一覧の名前を取ってきておきかえる-->
+        <ul>
+          @foreach ($category_all as $category)
           <li>
-            <div class="sidebar-recipi">
-              <p>和食</p>
+            <div class="sidebar-category">
+              <a href="/categories/{{ $category->id }}" class="pointer">{{ $category->name }}</a>
             </div>
           </li>
-          <li>
-            <div class="sidebar-recipi">
-              <p>イタリアン</p>
-            </div>
-          </li>
-          <li>
-            <div class="sidebar-recipi">
-              <p>フレンチ</p>
-            </div>
-          </li>
-          <li>
-            <div class="sidebar-recipi">
-              <p>中華</p>
-            </div>
-          </li>
-          <li>
-            <div class="sidebar-recipi">
-              <p>アジアン</p>
-            </div>
-          </li>
-          <li>
-            <div class="sidebar-recipi">
-              <p>エスニック</p>
-            </div>
-          </li>
-          <li>
-            <div class="sidebar-recipi">
-              <p>&#8194鍋</p>
-            </div>
-          </li>
-          <li>
-            <div class="sidebar-recipi">
-              <p>デザート</p>
-            </div>
-          </li>
+          @endforeach
         </ul>
     </div>
 </sidebar>

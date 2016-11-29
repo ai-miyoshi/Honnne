@@ -10,4 +10,11 @@ class Category extends Model
     public function items() {
       return $this->hasMany('App\Item');
     }
+
+    // public static function getReviewRanking() {
+    //   return [
+    //     1 => "test",
+    //     2 => "test"
+    //   ];
+    // }
 }
