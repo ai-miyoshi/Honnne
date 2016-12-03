@@ -26,4 +26,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // user->reccommends
+    public function reccomend() {
+      return $this->hasMany('App\Reccomend');
+    }
+
 }

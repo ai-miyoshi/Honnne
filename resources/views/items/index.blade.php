@@ -13,9 +13,7 @@
 
 <section>
   <div class="category-title">
-    <p class="top">Category Items</p>
-    <hr>
-    <p class="bottom">{{ $category->name}}一覧</p>
+    <h3>{{ $category->name}}一覧</h3>
   </div>
 </section>
 
@@ -45,64 +43,70 @@
         <a href="/items/{{ $item->id }}">
           <img src="/image/{{ $item->image }}" alt="..." class="item-box-image">
           <p class="items-box-name">{{ $item->name }}</p>
-          <div class="wrap items-box-score">
-            <span class="rate rate3"></span><!-- 平均スコアの表示-->
-          </div>
+          <ul class="review-score-box">
+            <li>
+              <div class="wrap items-box-score">
+                <p><span class="rate rate{{ round($item->review->avg('score', 1), 1) }}"></span></p>
+                <p>{{ round($item->review->avg('score', 1), 1) }}点</p>
+              </div>
+            </li>
+            <li>
+              <div class="review-number">
+                <p><i class="fa fa-commenting" aria-hidden="true"></i></p>
+                <p>{{ count($item->review) }}件</p>
+              </div>
+            </li>
+          </ul>
         </a>
       </li>
       @endforeach
     </ul>
-    <div style="text-align:center">ページネーション</div>
+    <div class="pagenation">{!! $items->render() !!}</div>
   </div>
 </article>
 
 <sidebar>
-    <div class="sidebar-block">
-        <div class="small-title">
-            <h2>カテゴリ</h2>
-        </div>         <!-- カテゴリ一覧の名前を取ってきておきかえる-->
-          <li>
-            <div class="sidebar-recipi">
-              <p>和食</p>
+  <div class="sidebar-block category-sidebar">
+  <div>
+      <h3>高評価ランキング</h3>
+      <ul>
+      @foreach ($CategoryScoreRank as $rank)
+        <li class="reviewrank">
+          <div class="sidebar-lank">
+            <p></p>
+          </div>
+          <a href="/items/{{ $rank->item_id }}" class="pointer">
+            <img src="/image/{{ $rank->image}}" class="lank-box-image">
+            <p class="">{{ $rank ->name }}</p>
+            <p class="">{{ round($rank ->ave_score, 1) }}</p>
+            <div class="wrap">
+              <span class="rate rate{{ round($rank ->ave_score, 1) }}"></span>
             </div>
-          </li>
-          <li>
-            <div class="sidebar-recipi">
-              <p>イタリアン</p>
-            </div>
-          </li>
-          <li>
-            <div class="sidebar-recipi">
-              <p>フレンチ</p>
-            </div>
-          </li>
-          <li>
-            <div class="sidebar-recipi">
-              <p>中華</p>
-            </div>
-          </li>
-          <li>
-            <div class="sidebar-recipi">
-              <p>アジアン</p>
-            </div>
-          </li>
-          <li>
-            <div class="sidebar-recipi">
-              <p>エスニック</p>
-            </div>
-          </li>
-          <li>
-            <div class="sidebar-recipi">
-              <p>&#8194鍋</p>
-            </div>
-          </li>
-          <li>
-            <div class="sidebar-recipi">
-              <p>デザート</p>
-            </div>
-          </li>
-        </ul>
+          </a>
+        </li>
+        @endforeach
+      </ul>
     </div>
+
+    <div class="reviewamount-rank">
+      <h3>レビュー数ランキング</h3>
+      <ul>
+      @foreach ($CategoryReviewAmount as $amount)
+        <li>
+          <div class="sidebar-lank">
+            <p></p>
+          </div>
+          <a href="/items/{{ $amount->item_id }}" class="pointer">
+            <img src="/image/{{ $amount->image }}" class="lank-box-image">
+            <p class="">{{ $amount->name }}</p>
+            <p class="">{{ $amount->review_amount }}件</p>
+          </a>
+        </li>
+        @endforeach
+      </ul>
+    </div>
+
+  </div>
 </sidebar>
 
 <aside>

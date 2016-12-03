@@ -16,32 +16,39 @@ class CategoriesController extends Controller
     public function __construct() {
       // カテゴリ一覧表示
       View::share('category_all', Category::all());
-
       // アイテム一覧表示
       View::share('item_all', Item::all());
-      //ユーザー定義関数を呼び出して使用することも可能
-      //ユーザー定義関数はコントローラと関連するモデルに記載する
-      // View::share('rankings', Category::getRanking());
+      View::share('review_all', Review::all());
     }
+    // public function __construct($id) {
+    //   //itemテーブルから指定されたidの情報を取得
+    //   $item = Item::findOrFail($id);
+    //   //アイテムに関連づいたレビューの取得
+    //   $reviews = $item->review;
+    //   // レビューの平均点の計算
+    //     // れびゅーの数
+    //     $length = count($reviews);
+    //     $total=0;
+    //     foreach ($reviews as $review) {
+    //       $score = $review->score;
+    //       $total = $score + $total;
+    //     }
+    //     $average = round($total / $length , 1) ;
+    //   View::share['review_length'=> $length, 'score_average' => $average];
+
 
 
     //カテゴリ一覧表示
     public function index() {
+      // 評価ランキング
+      $scorerank = Item::getReviewRank();
+      // レビュー数ランキング
+      $review_amount = Item::getReviewamount();
       //category一覧、item一覧表示はconstructで
-      return view('categories.index');
+      return view('categories.index', [ 'scorerank'=> $scorerank, 'review_amount'=> $review_amount ]);
+
     }
 
 
-    //あるカテゴリのitem一覧表示
-    public function show($id) {
-      //カテゴリテーブルから$idに対応した行を取得
-      $category = Category::findOrFail($id);
-
-      // $categoryに紐付いているitemsの取得
-      $items = $category->items;
-
-      // viewに$catogoryと$itemsを渡し、移動
-      return view('items.index')->with(['category' => $category, 'items' => $items]);
-    }
 
 }

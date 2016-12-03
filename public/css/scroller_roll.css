@@ -1,12 +1,14 @@
 .scroller_roll{
     padding: 0px;
-    margin: 0 auto;
+    margin: 0px;
     overflow: hidden;
 }
 .scroller_roll ul{
     padding: 0px;
     margin: 0px;
     float: left;
+        overflow: hidden;
+
 }
 .scroller_roll ul li{
     padding: 0px;

@@ -13,14 +13,18 @@
   <link rel="stylesheet" href="/css/default.css">
   <link rel="stylesheet" href="/css/category_index.css">
   <link rel="stylesheet" href="/css/items_index.css">
+  <link rel="stylesheet" href="/css/items_show.css">
 
   <!-- 画像スクロール -->
-  <link href="css/scroller_roll.css" rel="stylesheet" type="text/css"></link>
+  <link href="/css/scroller_roll.css" rel="stylesheet" type="text/css">
 
   <!-- fontawesome -->
   <script src="https://use.fontawesome.com/34d33137ab.js"></script>
   <!-- スクリプト -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+
+
+
 </head>
 
 <body>
@@ -64,8 +68,8 @@
             </ul>
         </li>
       @endif
-        <li><a href="" class="pointer"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;閲覧履歴<a></li>
-        <li><a href="" class="pointer"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;ご利用ガイド<a></li>
+      <li><a href="" class="pointer"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;閲覧履歴</a>/li>
+      <li><a href="" class="pointer"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;ご利用ガイド</a></li>
       </ul>
     </div>
   </header>
@@ -149,7 +153,7 @@
   <div class="login-modal-wrapper" id="signup-modal">
     <div class="modal">
       <div>
-        <i class="fa fa-2x fa-times" id="close-modal"></i>
+        <i class="fa fa-2x fa-times" id="close-modal2"></i>
       </div>
       <div id="signup-form">
         <h2>ログイン</h2>
@@ -221,6 +225,10 @@
     @endif
     <!-- セッションメッセージの表示ここまで -->
 
+    <!-- JavaScript -->
+      <script src="/js/script.js"></script>
+    <!-- JavaScript -->
+
     <!-- 個別ベージの呼び出し -->
     @yield('content')
 
@@ -231,12 +239,7 @@
     <p><small>Copyright&nbsp;©&nbsp;Ai&nbsp;MiyoshiL&nbsp;&nbsp;All&nbsp;Rights&nbsp;Reserved.</small></p>
   </footer>
 
-<!-- JavaScript -->
-  <script src="/js/script.js"></script>
-  <!--画像スクロール  -->
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script type="text/javascript" src="js/scroller_roll.js"></script>
-<!-- JavaScript -->
+
 
 </body>
 </html>

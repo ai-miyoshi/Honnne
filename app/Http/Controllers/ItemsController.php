@@ -9,11 +9,22 @@ use App\Http\Requests;
 use App\Category;
 use App\Item; //itemモデルの指定
 use App\Review;
+use View;
+
+// ページネーション
+// use DB;
+// use App\Http\Controllers\Controller;
 
 class ItemsController extends Controller
 {
 
-
+    public function __construct() {
+      // カテゴリ一覧表示
+      View::share('category_all', Category::all());
+      // アイテム一覧表示
+      View::share('item_all', Item::all());
+      View::share('review_all', Review::all());
+    }
 
     // アイテム個別ページ + レビュー一覧表示+レビューへのコメント表示アクション
     public function show($id) {
@@ -23,8 +34,42 @@ class ItemsController extends Controller
       $category = $item->category;
       //アイテムに関連づいたレビューの取得
       $reviews = $item->review;
+      // レビュー数
+      $length = count($reviews);
+      //評価の平均
+      $total=0;
+      if ($length == 0) {
+        $average = '評価なし';
+      } else {
+        $average = round($reviews->avg('score'), 1);
+        // foreach ($reviews as $review) {
+        //   $score = $review->score;
+        //   $total = $score + $total;
+        }
+        // $average = round($total / $length , 1) ;
+
+
       // アイテム個別ページにreviewsとしてデータを送る(review有無分岐はviewで)
-      return view('items.show', ['reviews'=> $reviews, 'item'=> $item, 'category' => $category]);
+      return view('items.show', ['reviews'=> $reviews, 'item'=> $item, 'category' => $category, 'average' =>$average, 'review_number'=> $length ]);
+    }
+
+
+    //あるカテゴリのitem一覧表示
+    public function index($id) {
+      //カテゴリテーブルから$idに対応した行を取得
+      $category = Category::findOrFail($id);
+
+      // $categoryに紐付いているitemsの取得
+      $items = Item::where('category_id', $category->id)->paginate(5);
+
+      // カテゴリの評価点ランキング
+      $CategoryScoreRank = Item::getCategoryReviewRank($id);
+      // カテゴリのレビュー数ランキング
+      $CategoryReviewAmount = Item::getCategoryReviewamount($id);
+
+
+      // viewに$catogoryと$itemsを渡し、移動
+      return view('items.index')->with(['category' => $category, 'items' => $items, 'CategoryScoreRank'=>$CategoryScoreRank, 'CategoryReviewAmount'=>$CategoryReviewAmount]);
     }
 
 

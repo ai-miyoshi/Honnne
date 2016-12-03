@@ -19,14 +19,18 @@ Auth::routes();
 // 上記についてきたやつ
 Route::get('/home', 'HomeController@index');
 
-// アイテム一覧
-Route::get('/categories/{id}', 'CategoriesController@show');
+// カテゴリのアイテム一覧
+Route::get('/categories/{id}', 'ItemsController@index');
 
-// アイテム一覧＋レビュー一覧
+// アイテム詳細＋レビュー一覧
 Route::get('/items/{id}', 'ItemsController@show');
+// 参考になった->はい
+Route::post('/items/{id}', 'ReviewsController@store');
 
 // レビュー投稿
 Route::post('/reviews', 'ReviewsController@create');
+
+
 
 // カテゴリ一覧
 Route::get('/categories', 'CategoriesController@index');

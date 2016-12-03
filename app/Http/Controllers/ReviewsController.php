@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 // 名前空間
 use App\Item;
 use App\Review;
+use App\Recommend;
+
 
 class ReviewsController extends Controller
 {
@@ -29,6 +31,20 @@ class ReviewsController extends Controller
 
       // ビューへリダイレクト
       return redirect('/items/'.$review->item_id) ->with('flash_message','レビューを投稿しました。');
+    }
 
+    // 参考になったの登録
+    public function store(Request $request) {
+      // テーブルに新規登録
+      //ログイン判定
+      // if () {
+        $recomennd = new Recommend();
+        $recomennd ->user_id = $request ->user_id;
+        $recomennd ->review_id = $request ->review_id;
+        $recommend ->save();
+        dd($recommend);
+      // }
+      // ビューへリダイレクト
+      return redirect('/items/'.$recommend->item_id) ->with('flash_message','レビューが参考になったと登録しました');
     }
 }

@@ -1,0 +1,122 @@
+/*section アイテム詳細*/
+.item-detail {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+.item-detail .title {
+  border-left: solid 5px blue;
+  margin: 10px 0 0 5px ;
+  padding-left: 5px;
+  margin-bottom: 10px;
+}
+.item-detail .title h1 {
+  padding-right: 10px;
+}
+.score-review {
+  padding-left: 15px;
+  position: relative;
+}
+.score-review .number {
+  position: absolute;
+   top: -2px;
+   left: 115px;
+}
+.number .review {
+  padding-left: 15px;
+}
+.number .add-review {
+  margin-left: 25px;
+  border:solid 1px orange;
+  background-color: orange;
+  border-radius: 5px;
+  padding-right: 10px;
+  padding-left:10px;
+}
+.image-info {
+  padding-top: 10px;
+}
+.image-info .image {
+  padding-left: 20px;
+  max-height: 200px;
+  max-width: 200px;
+  float: left;
+  margin-right: 20px;
+}
+.image-info p {
+  width:800px;
+}
+
+/*レビューsection*/
+.user-review {
+  border-left: solid 5px orange;
+  margin-left: 15px;
+  position: relative;
+  margin: 10px 0px 10px 19px;
+  padding-left: 10px;
+}
+.user-review .title {
+  position: absolute;
+   top: -2px;
+   left: 116px;
+}
+
+.user-review .evaluation {
+  font-size: 12px;
+  padding-left: 50px;
+}
+
+
+.review-empty {
+  padding-bottom: 5px;
+}
+
+/*コメント*/
+.review-comments {
+  border: solid 1px yellow;
+  padding-left: 30px;
+}
+.review-comments .comment-body {
+  margin-left: 23px;
+  padding-left: 10px;
+  border-left: solid 5px #ffdab9;
+
+}
+.comment-body {
+/*  border-bottom: solid 1px gray;*/
+  width: 500px;
+  margin-bottom: 10px
+}
+.create-comment {
+  padding-left: 30px;
+  margin-bottom: 10px;
+}
+
+
+.comment-body {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

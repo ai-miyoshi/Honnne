@@ -11,18 +11,13 @@
 
 <section class="category-index">
   <div class="category-box">
-    <div class="category-title top">
-      <p class="top">Category List</p>
-      <hr>
-      <p class="bottom">カテゴリ一覧</p>
-    </div>
-
+   <h3>カテゴリ一覧</h3>
     <div class="category-boxs">
       <ul>
         @foreach ($category_all as $category)
         <li>
           <a href="/categories/{{ $category->id }}" class="pointer">
-            <image src="/image/{{ $category->image }}" class="category-box-image">
+            <img src="/image/{{ $category->image }}" class="category-box-image">
             <p class="category-box-name">{{ $category->name }}</p>
           </a>
         </li>
@@ -32,65 +27,68 @@
   </div>
 
   <sidebar class="category-sidebar">
-      <div class="category-title top">
-        <p class="top">Rankings</p>
-        <hr>
-        <p class="bottom">ランキング</p>
-      </div>
-    <ul>
-      <li class="lank-title">評価点ランキング</li>
-      <li class="first">
-        <div class="sidebar-lank">
-          <p class="first">第1位</p>
-        </div>
-        <a href="/categories/{{ $category->id }}" class="pointer">
-          <image src="/image/{{ $category->image }}" class="lank-box-image">
-          <p class="">製品名</p>
-          <p class="">スコア</p>
-        </a>
-      </li>
-      <hr>
-      <li class="sidebar-second">
-        <div class="sidebar-lank">
-          <p class="second">第2位</p>
-        </div>
-        <a href="/categories/{{ $category->id }}" class="pointer">
-          <image src="/image/{{ $category->image }}" class="lank-box-image">
-          <p class="">製品名</p>
-          <p class="">スコア</p>
-        </a>
-      </li>
-      <hr>
-      <li class="sidebar-third">
-        <div class="sidebar-lank">
-          <p class="third">第3位</p>
-        </div>
-        <a href="/categories/{{ $category->id }}" class="pointer">
-          <image src="/image/{{ $category->image }}" class="lank-box-image">
-          <p class="">製品名</p>
-          <p class="">スコア</p>
-        </a>
-      </li>
-    </ul>
+    <div >
+      <h3>高評価ランキング</h3>
+      <ul>
+      @foreach ($scorerank as $rank)
+        <li class="reviewrank">
+          <div class="sidebar-lank">
+            <p></p>
+          </div>
+          <a href="/items/{{ $rank->item_id }}" class="pointer">
+            <img src="/image/{{ $rank->image}}" class="lank-box-image">
+            <p class="">{{ $rank ->name }}</p>
+            <p class="">{{ round($rank ->ave_score, 1) }}</p>
+            <div class="wrap">
+              <span class="rate rate{{ round($rank ->ave_score, 1) }}"></span>
+            </div>
+          </a>
+        </li>
+        @endforeach
+      </ul>
+    </div>
+
+    <div class="reviewamount-rank">
+      <h3>レビュー数ランキング</h3>
+      <ul>
+      @foreach ($review_amount as $amount)
+        <li>
+          <div class="sidebar-lank">
+            <p></p>
+          </div>
+          <a href="/items/{{ $amount->item_id }}" class="pointer">
+            <img src="/image/{{ $amount->image }}" class="lank-box-image">
+            <p class="">{{ $amount->name }}</p>
+            <p class="">{{ $amount->review_amount }}件</p>
+          </a>
+        </li>
+        @endforeach
+      </ul>
+    </div>
   </sidebar>
+
 </section>
 
-<section class="item_index">
-  <div class="category-title">
-    <p class="top">Item List</p>
-    <hr>
-    <p class="bottom">アイテム一覧</p>
-  </div>
-  <!-- 画像スクロール -->
-  <div id="scroller_roll1" class="scroller_roll">
+<div id="scroller_roll1" class="scroller_roll">
     <ul>
-      @foreach ($item_all as $item)
-      <li><a href="/items/{{ $item->id }}" title="{{ $item->name }}"><img src="/image/{{ $item->image }}"></a></li>
+        @foreach ($item_all as $item)
+      <li>
+        <a href="/items/{{ $item->id }}">
+          <img src="/image/{{ $item->image }}" alt="...">
+          <p >{{ $item->name }}</p>
+          <p><span class="rate rate{{ round($item->review->avg('score', 1), 1) }}"></span></p>
+          <p>{{ round($item->review->avg('score', 1), 1) }}点</p>
+          <p><i class="fa fa-commenting" aria-hidden="true"></i></p>
+          <p>{{ count($item->review) }}件</p>
+        </a>
+      </li>
       @endforeach
-  < /ul>
-  </div>
-</section>
+    </ul>
+    <div style="clear: both"></div>
+</div>
 
-
-
+<!-- JavaScript -->
+  <!--画像スクロール  -->
+  <script type="text/javascript" src="/js/scroller_roll.js"></script>
+  <script type="text/javascript" src="/js/scroller_roll2.js"></script>
 @endsection
