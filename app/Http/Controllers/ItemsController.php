@@ -7,9 +7,11 @@ use App\Http\Requests;
 
 // 名前空間の指定
 use App\Category;
-use App\Item; //itemモデルの指定
+use App\Item;
 use App\Review;
+use App\Recommend;
 use View;
+use Cookie;
 
 // ページネーション
 // use DB;
@@ -26,7 +28,18 @@ class ItemsController extends Controller
       View::share('review_all', Review::all());
     }
 
-    // アイテム個別ページ + レビュー一覧表示+レビューへのコメント表示アクション
+    // 閲覧履歴の表示
+    public function history() {
+      // クッキーの取り出し
+      $ids = Cookie::get('items');
+      // item_idで取り出し
+      $items = Item::whereIn('id', $ids)->paginate(5);
+      return view('items.history', ['items'=> $items]);
+    }
+
+    // アイテム個別ページ
+    // レビュー一覧表示
+    // コメント表示
     public function show($id) {
       //itemテーブルから指定されたidの情報を取得
       $item = Item::findOrFail($id);
@@ -48,6 +61,16 @@ class ItemsController extends Controller
         }
         // $average = round($total / $length , 1) ;
 
+      // 閲覧履歴
+      $minutes = 10;
+      // Cookieから値を取得
+      $value = Cookie::get('items');
+      if( !$value ) {
+        $value = [];
+      }
+      $value[] = (int) $id;
+      // Cookie添付
+      Cookie::queue('items', $value, $minutes);
 
       // アイテム個別ページにreviewsとしてデータを送る(review有無分岐はviewで)
       return view('items.show', ['reviews'=> $reviews, 'item'=> $item, 'category' => $category, 'average' =>$average, 'review_number'=> $length ]);
@@ -89,7 +112,7 @@ class ItemsController extends Controller
       // 'img'  => 'required | mimes:jpeg,jpg,png,JPG,PNG',
       ]);
 
-      // 在庫管理画面　アイテムを新規登録
+      // 在庫管理画面 アイテムを新規登録
       $item = new Item();
       $item->name  = $request->name;
       $item->info  = $request->info;
@@ -100,4 +123,14 @@ class ItemsController extends Controller
       // ビューへリダイレクト
       return redirect('/admin') ->with('flash_message','商品'.$item->name.'を新規登録しました');
     }
+
+
+    // 検索
+    public function search(Request $request) {
+      $keyword = $request->search;
+      $result_search = Item::where('name', 'like', "%{$request->search}%" )->paginate(5);
+      // ビューにリダイレクト
+      return view('items.search',['result_search'=> $result_search, 'keyword'=> $keyword]);
+    }
+
 }

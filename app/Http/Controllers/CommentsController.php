@@ -22,6 +22,7 @@ class CommentsController extends Controller
       $comment->title = $request->title;
       $comment->body = $request->body;
       $comment->review_id = $request->review_id;
+      $comment->user_id = $request->user_id;
       $comment->save();
 
       // ビューにリダイレクト

@@ -17,34 +17,58 @@ class ReviewsController extends Controller
       // バリデーション
       $this->validate($request, [
         'title' => 'required | max:30 | min:2',
-        'body' => 'required | min:5',
+        'body'  => 'required | min:5',
         'score' => 'required'
       ]);
 
       // テーブルにレビューを新規登録
       $review = new Review();
-      $review->title  = $request->title;
-      $review->body  = $request->body;
-      $review->score  = $request->score;
-      $review->item_id = $request->item_id;
+      $review->title    = $request->title;
+      $review->body     = $request->body;
+      $review->score    = $request->score;
+      $review->item_id  = $request->item_id;
+      $review->user_id  = $request->user_id;
       $review->save();
 
       // ビューへリダイレクト
       return redirect('/items/'.$review->item_id) ->with('flash_message','レビューを投稿しました。');
     }
 
-    // 参考になったの登録
+    // 「参考になった」ボタンの登録
     public function store(Request $request) {
-      // テーブルに新規登録
-      //ログイン判定
-      // if () {
-        $recomennd = new Recommend();
-        $recomennd ->user_id = $request ->user_id;
-        $recomennd ->review_id = $request ->review_id;
-        $recommend ->save();
-        dd($recommend);
-      // }
-      // ビューへリダイレクト
-      return redirect('/items/'.$recommend->item_id) ->with('flash_message','レビューが参考になったと登録しました');
+      // 初めて押したかの判定=Recommend tableにuser_idとreview_idがあるか判定 *exists判定のために->get();を書かない
+      $validate = Recommend::where('user_id', '=', $request->user_id)
+                           ->where('review_id', '=', $request->review_id);
+      // $validateがexistでないならば->新規登録
+      if ( !$validate->exists() ) {
+        $reco = new Recommend();
+        $reco ->user_id = $request ->user_id;
+        $reco ->review_id = $request ->review_id;
+        $reco ->save();
+        // ビューへリダイレクト
+        return redirect('/items/'.$request->item_id) ->with('flash_message','レビューが参考になったと登録しました');
+      } else {
+        // ビューへリダイレクト
+        return redirect('/items/'.$request->item_id) ->with('flash_message','参考になったボタンは１回しか押せません');
+      }
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

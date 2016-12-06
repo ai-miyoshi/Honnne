@@ -31,5 +31,13 @@ class User extends Authenticatable
     public function reccomend() {
       return $this->hasMany('App\Reccomend');
     }
+    // user->review
+    public function review() {
+      return $this->hasMany('App\Review');
+    }
+    // user->comment
+    public function comment() {
+      return $this->hasMany('App\Comment');
+    }
 
 }

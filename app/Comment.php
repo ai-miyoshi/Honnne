@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    //// review->comments
+    // review->comments
     public function review() {
     return $this->belongsTo('App\Review');
   }
+    // user->comments
+    public function user() {
+    return $this->belongsTo('App\User');
+    }
 }

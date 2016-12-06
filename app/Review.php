@@ -18,8 +18,12 @@ class Review extends Model
       return $this->hasMany('App\Comment');
     }
     // reviews->reccommend
-    public function reccomend() {
-      return $this->hasMany('App\Reccomend');
+    public function recommend() {
+      return $this->hasMany('App\Recommend');
+    }
+    // reviews->user
+    public function user() {
+    return $this->belongsTo('App\User');
     }
 
 }

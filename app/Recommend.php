@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Reccomend extends Model
+class Recommend extends Model
 {
-    // reccomennds->review
+    // recommends->review
     public function review() {
     return $this->belongsTo('App\Review');
     }
-    // reccomennds->user
+    // recommends->user
     public function user() {
     return $this->belongsTo('App\User');
     }

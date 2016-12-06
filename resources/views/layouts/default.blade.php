@@ -37,9 +37,10 @@
     </div>
 
     <div class="header-search">
-      <form>
+      <form method="post" action="/search" >
+      {{ csrf_field() }}
         <input type="submit" value="" class="search-btn">
-        <input type="text" name="search"  placeholder="Search" class="header-form">
+        <input type="text" name="search" placeholder="Search" class="header-form" value="{{ $keyword or "" }}">
       </form>
     </div>
 
@@ -68,9 +69,9 @@
             </ul>
         </li>
       @endif
-      <li><a href="" class="pointer"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;閲覧履歴</a>/li>
-      <li><a href="" class="pointer"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;ご利用ガイド</a></li>
-      </ul>
+      <li><a href="/items/history" class="pointer"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;閲覧履歴</a></li>
+<!--       <li><a href="" class="pointer"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;ご利用ガイド</a></li>
+ -->      </ul>
     </div>
   </header>
 
@@ -83,7 +84,7 @@
       </div>
       <div id="signup-form">
         <h2>新規登録</h2>
-        <form class="form-horizontal" role="form" method="POST" action="{{ url('/categories') }}">
+        <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -157,7 +158,7 @@
       </div>
       <div id="signup-form">
         <h2>ログイン</h2>
-        <form class="form-horizontal" role="form" method="POST" action="{{ url('/categories') }}">
+        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
