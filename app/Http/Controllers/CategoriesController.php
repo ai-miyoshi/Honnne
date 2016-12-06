@@ -8,6 +8,7 @@ use App\Item;
 use App\Category;
 use App\Review;
 use View;
+use Cookie;
 
 
 class CategoriesController extends Controller
@@ -44,6 +45,8 @@ class CategoriesController extends Controller
       $scorerank = Item::getReviewRank();
       // レビュー数ランキング
       $review_amount = Item::getReviewamount();
+      // ログインリダイレクト用アクション
+      Cookie::queue('url', "/", 10);
       //category一覧、item一覧表示はconstructで
       return view('categories.index', [ 'scorerank'=> $scorerank, 'review_amount'=> $review_amount ]);
 

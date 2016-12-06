@@ -22,6 +22,30 @@
   <script src="https://use.fontawesome.com/34d33137ab.js"></script>
   <!-- スクリプト -->
   <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+  <!-- yamaguchi -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.webticker.min.js"></script>
+<script>
+$(function(){
+  $(".slides").webTicker({
+      height:    '500px',
+      direction: 'left',
+      hoverpause: false,
+      startEmpty: false,
+      duplicate:true
+  });
+});
+</script>
+<style>
+* {
+  margin:0;
+  padding:0;
+}
+.slides li p{
+  font-size:  30px;
+  text-align: center;
+}
+</style>
 
 
 

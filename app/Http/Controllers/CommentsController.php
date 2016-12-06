@@ -13,14 +13,14 @@ class CommentsController extends Controller
     public function store(Request $request) {
       // バリデーション
       $this->validate($request, [
-        'title' => 'required | max:30 | min:2',
-        'body' => 'required | min:5',
+        'commenttitle' => 'required',
+        'commentbody' => 'required',
       ]);
 // dd($request);
       // コメントの保存
       $comment = new Comment();
-      $comment->title = $request->title;
-      $comment->body = $request->body;
+      $comment->title = $request->commenttitle;
+      $comment->body = $request->commentbody;
       $comment->review_id = $request->review_id;
       $comment->user_id = $request->user_id;
       $comment->save();

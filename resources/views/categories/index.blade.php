@@ -69,23 +69,26 @@
 
 </section>
 
-<div id="scroller_roll1" class="scroller_roll">
-    <ul>
-        @foreach ($item_all as $item)
-      <li>
-        <a href="/items/{{ $item->id }}">
-          <img src="/image/{{ $item->image }}" alt="...">
-          <p >{{ $item->name }}</p>
-          <p><span class="rate rate{{ round($item->review->avg('score', 1), 1) }}"></span></p>
-          <p>{{ round($item->review->avg('score', 1), 1) }}点</p>
-          <p><i class="fa fa-commenting" aria-hidden="true"></i></p>
-          <p>{{ count($item->review) }}件</p>
-        </a>
-      </li>
-      @endforeach
-    </ul>
-    <div style="clear: both"></div>
-</div>
+
+
+
+
+<ul class="slides">
+  @foreach ($item_all as $item)
+  <li>
+    <a href="/items/{{ $item->id }}">
+      <img src="/image/{{ $item->image }}" alt="...">
+      <p >{{ $item->name }}</p>
+      <p><span class="rate rate{{ round($item->review->avg('score', 1), 1) }}"></span></p>
+      <p>{{ round($item->review->avg('score', 1), 1) }}点</p>
+      <p><i class="fa fa-commenting" aria-hidden="true"></i></p>
+      <p>{{ count($item->review) }}件</p>
+    </a>
+  </li>
+  @endforeach
+</ul>
+
+
 
 <!-- JavaScript -->
   <!--画像スクロール  -->

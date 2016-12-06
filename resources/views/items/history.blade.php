@@ -6,8 +6,9 @@
 <article>
   <div class="items-box">
   <h3>閲覧履歴</h3>
-    <ul>
-      @forelse ($items as $item)
+    @if ($items !== null)
+      <ul>
+      @foreach ($items as $item)
       <li class="item-box">
         <a href="/items/{{ $item->id }}">
           <img src="/image/{{ $item->image }}" alt="..." class="item-box-image">
@@ -28,14 +29,17 @@
           </ul>
         </a>
         </li>
-      @empty
+      @endforeach
+      </ul>
+      <div class="pagenation">{!! $items->render() !!}</div>
+    @else
+    <ul>
       <li>
         <h4>閲覧履歴はありません</h4>
         <a href="/categories" class="pointer">カテゴリから製品を探す</a>
       </li>
-      @endforelse
     </ul>
-    <div class="pagenation">{!! $items->render() !!}</div>
+    @endif
   </div>
 </article>
 

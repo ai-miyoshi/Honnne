@@ -36,7 +36,7 @@ Route::post('/reviews', 'ReviewsController@create');
 // カテゴリ一覧
 Route::get('/', 'CategoriesController@index');
 Route::get('/categories', 'CategoriesController@index');
-
+Route::get('/top', 'ItemsController@loginRedirect');
 // 管理ページ
 Route::get('/admin', 'ItemsController@create');
 Route::post('/admin', 'ItemsController@store');

@@ -32,8 +32,11 @@ class ItemsController extends Controller
     public function history() {
       // クッキーの取り出し
       $ids = Cookie::get('items');
-      // item_idで取り出し
-      $items = Item::whereIn('id', $ids)->paginate(5);
+      $items = null;
+      if ($ids !== null) {
+        // item_idで取り出し
+        $items = Item::whereIn('id', $ids)->paginate(5);
+      }
       return view('items.history', ['items'=> $items]);
     }
 
@@ -55,14 +58,10 @@ class ItemsController extends Controller
         $average = '評価なし';
       } else {
         $average = round($reviews->avg('score'), 1);
-        // foreach ($reviews as $review) {
-        //   $score = $review->score;
-        //   $total = $score + $total;
-        }
-        // $average = round($total / $length , 1) ;
+      }
 
-      // 閲覧履歴
-      $minutes = 10;
+      // 閲覧履歴クッキー登録
+      $minutes = 30;
       // Cookieから値を取得
       $value = Cookie::get('items');
       if( !$value ) {
@@ -72,10 +71,20 @@ class ItemsController extends Controller
       // Cookie添付
       Cookie::queue('items', $value, $minutes);
 
+      // ログインリダイレクト用アクション
+      Cookie::queue('url', "/items/$id", $minutes);
+
       // アイテム個別ページにreviewsとしてデータを送る(review有無分岐はviewで)
       return view('items.show', ['reviews'=> $reviews, 'item'=> $item, 'category' => $category, 'average' =>$average, 'review_number'=> $length ]);
     }
-
+    // ログインリダイレクトアクション
+    public function loginRedirect(){
+      $url =Cookie::get('url');
+      if ($url == null) {
+        $url = '/categories';
+      }
+      return redirect($url);
+    }
 
     //あるカテゴリのitem一覧表示
     public function index($id) {

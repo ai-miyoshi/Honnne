@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/categories';
+    protected $redirectTo = '/top';
 
     /**
      * Create a new controller instance.
@@ -46,7 +46,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/categories');
+        return redirect('/');
     }
 
 }

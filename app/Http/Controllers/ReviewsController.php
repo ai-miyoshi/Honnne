@@ -16,15 +16,15 @@ class ReviewsController extends Controller
     public function create(Request $request) {
       // バリデーション
       $this->validate($request, [
-        'title' => 'required | max:30 | min:2',
-        'body'  => 'required | min:5',
+        'reviewtitle' => 'required' ,
+        'reviewbody'  => 'required',
         'score' => 'required'
       ]);
 
       // テーブルにレビューを新規登録
       $review = new Review();
-      $review->title    = $request->title;
-      $review->body     = $request->body;
+      $review->title    = $request->reviewtitle;
+      $review->body     = $request->reviewbody;
       $review->score    = $request->score;
       $review->item_id  = $request->item_id;
       $review->user_id  = $request->user_id;

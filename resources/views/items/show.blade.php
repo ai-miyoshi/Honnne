@@ -39,19 +39,6 @@
     </div>
 </section>
 
-<section>
-    <!-- バリデーションエラーの表示 -->
-  @if ($errors->has('title'))
-    <span class="error">{{$errors->first('title')}}</span>
-  @endif
-  @if ($errors->has('body'))
-    <span class="error">{{$errors->first('body')}}</span>
-  @endif
-  @if ($errors->has('score'))
-    <span class="error">{{$errors->first('score')}}</span>
-  @endif
-  <!-- エラーの表示 -->
-</section>
 
 
 <section>
@@ -65,9 +52,9 @@
       <input type="hidden" name="item_id" value="{{ $item->id }}">
       <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
       <label>タイトル</label>
-      <input type="text" name="title" value="{{ old('title') }}"class="">
+      <input type="text" name="reviewtitle" value="{{ old('title') }}"class="">
       <label>レビュー</label>
-      <input type="textarea" name="body" value="{{ old('body') }}" class="">
+      <input type="textarea" name="reviewbody" value="{{ old('body') }}" class="">
       <label>評価</label>
       <fieldset class="rating">
         <!-- <legend></legend> -->
@@ -79,6 +66,19 @@
       </fieldset>
       <input type="submit" value="投稿" class="">
     </form>
+
+    <!-- バリデーションエラーの表示 -->
+    @if ($errors->has('reviewtitle'))
+      <span class="error">{{$errors->first('reviewtitle')}}</span>
+    @endif
+    @if ($errors->has('reviewbody'))
+      <span class="error">{{$errors->first('reviewbody')}}</span>
+    @endif
+    @if ($errors->has('score'))
+      <span class="error">{{$errors->first('score')}}</span>
+    @endif
+    <!-- エラーの表示 -->
+
   @endif
 </section>
 
@@ -144,11 +144,21 @@
               <input type="hidden" name="review_id" value="{{ $review->id }}">
               <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
               <label>タイトル</label>
-              <input type="text" name="title" value="{{ old('title') }}"class="">
+              <input type="text" name="commenttitle" value="{{ old('title') }}"class="">
               <label>コメント</label>
-              <input type="textarea" name="body" value="{{ old('body') }}" class="">
+              <input type="textarea" name="commentbody" value="{{ old('body') }}" class="">
               <input type="submit" value="投稿" class="">
             </form>
+
+            <!-- バリデーションエラーの表示 -->
+            @if ($errors->has('commentbody'))
+              <span class="error">{{$errors->first('commentbody')}}</span>
+            @endif
+            @if ($errors->has('commenttitle'))
+              <span class="error">{{$errors->first('commenttitle')}}</span>
+            @endif
+            <!-- エラーの表示 -->
+
           @endif <!--ログイン判定-->
         </div>
 
@@ -164,11 +174,21 @@
               <input type="hidden" name="review_id" value="{{ $review->id }}">
               <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
               <label>タイトル</label>
-              <input type="text" name="title" value="{{ old('title') }}"class="">
+              <input type="text" name="commenttitle" value="{{ old('title') }}"class="">
               <label>コメント</label>
-              <input type="textarea" name="body" value="{{ old('body') }}" class="">
+              <input type="textarea" name="commentbody" value="{{ old('body') }}" class="">
               <input type="submit" value="投稿" class="">
             </form>
+
+            <!-- バリデーションエラーの表示 -->
+            @if ($errors->has('commentbody'))
+            <span class="error">{{$errors->first('commentbody')}}</span>
+            @endif
+            @if ($errors->has('commenttitle'))
+            <span class="error">{{$errors->first('commenttitle')}}</span>
+            @endif
+            <!-- エラーの表示 -->
+
           @endif<!--ログイン判定end-->
         </div>
 

@@ -90,6 +90,21 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'reviewtitle' => [
+            'required' => 'レビュータイトルを入力してください'
+        ],
+        'commenttitle' => [
+            'required' => 'コメントタイトルを入力してください'
+        ],
+        'score' => [
+            'required' => '星をクリックして点数を選択してください'
+        ],
+        'reviewbody' => [
+            'required' => 'レビューを入力してください'
+        ],
+        'commentbody' => [
+            'required' => 'コメントを入力してください'
+        ],
     ],
 
     /*
