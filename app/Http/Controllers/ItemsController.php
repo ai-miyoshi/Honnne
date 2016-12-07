@@ -92,7 +92,7 @@ class ItemsController extends Controller
       $category = Category::findOrFail($id);
 
       // $categoryに紐付いているitemsの取得
-      $items = Item::where('category_id', $category->id)->paginate(5);
+      $items = Item::where('category_id', $category->id)->paginate(6);
 
       // カテゴリの評価点ランキング
       $CategoryScoreRank = Item::getCategoryReviewRank($id);

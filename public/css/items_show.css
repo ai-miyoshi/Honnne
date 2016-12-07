@@ -1,7 +1,7 @@
 /*section アイテム詳細*/
 .item-detail {
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .item-detail .title {
   border-left: solid 5px blue;
@@ -23,6 +23,11 @@
 }
 .number .review {
   padding-left: 15px;
+}
+.number li p {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: -2px;
 }
 .number .add-review {
   margin-left: 25px;
@@ -72,7 +77,6 @@
 
 /*コメント*/
 .review-comments {
-  border: solid 1px yellow;
   padding-left: 30px;
 }
 .review-comments .comment-body {
@@ -96,12 +100,15 @@
   display: none;
 }
 
-
-
-
-
-
-
+/*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
+.add-review-form {
+border-bottom: dashed 1px #d3d3d3;
+}
+.add-review-form-title {
+padding-left: 20px;
+border-top: dashed 1px #d3d3d3;
+padding-top: 10px;
+}
 
 
 

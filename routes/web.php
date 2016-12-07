@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 // ログイン/ログアウト
 Auth::routes();
-Route::get('/home', 'HomeController@index');
+Route::get('/categories', 'HomeController@index');
 
 // カテゴリのアイテム一覧
 Route::get('/categories/{id}', 'ItemsController@index');

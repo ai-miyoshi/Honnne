@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Item;
+use App\Category;
+use App\Review;
+use View;
+
 
 class ResetPasswordController extends Controller
 {
@@ -35,5 +40,14 @@ class ResetPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+      // カテゴリ一覧表示
+      View::share('category_all', Category::all());
+      // アイテム一覧表示
+      View::share('item_all', Item::all());
+      View::share('review_all', Review::all());
+
     }
+
+
+
 }

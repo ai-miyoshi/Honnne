@@ -11,31 +11,7 @@ ul {
 }
 li {
   display: inline-block;
-  font-size: 16px;
-}
-.form {
-
-}
-.btn {
-  font-size: 15px;
-  background: #EEE;
-  border-top: 1px solid #DDD;
-  border-left: 1px solid #DDD;
-  border-right: 1px solid #BBB;
-  border-bottom: 1px solid #BBB;
-  color:#111;
-  padding: 3px 13px 3px 13px;
-}
-
-.container {
-  width: 1170px;
-  padding: 0 15px;
-  margin: 0 auto;
-}
-.container:after {
-  content: "";
-  display: block;
-  clear: both;
+  font-size: 14px;
 }
 .pointer {
   cursor: pointer;
@@ -43,172 +19,112 @@ li {
 .pointer:hover {
   text-decoration: underline;
 }
-
-section {
-  border: solid 1px green; 
+p {
+  padding:0;
+  margin:0;
 }
 
-/*.btn {
-  padding: 8px 24px;
-  color: white;
-  display: inline-block;
-  opacity: 0.8;
-  border-radius: 4px;
-  cursor: pointer;
+/*footerを最下部に固定*/
+html {
+  height: 100%;
 }
+body {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+footer {
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+/*footer*/
 
-.btn:hover {
-  opacity: 1;
-}*/
 
 
 /*all*/
 
+
+
+
 /*   HEADER  START  */
 header{
-  background-color: #ffffff;
-  text-align: center;
-  border-bottom: solid 1px gray;
+  background-color: rgb(53,47,61);
+  padding-bottom: 5px;
 }
-
 .header-logo {
-  float: left;
-  width: 30%;
+  color: white;
 }
-.header-logo,.top,.bottom {
-  color: #696969;
-  font-weight: lighter;
+.header-middle{
+  padding-top: 20px;
 }
-
-/*Search form*/
-.header-search {
-  float: left;
-  height: 82px;
-  width: 40%;
+.header-right{
+  padding-top: 20px;
 }
-.header-search form {
-  line-height: 82px;
+.header-right ul li a {
+  display: inline-block;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
 }
-.header-search .header-form {
-  height: 32px;
-  width: 300px;
-  font-size: 15px;
-  border-radius: 20px 0 20px 0;
-  padding-left: 34px;
-  outline: none;
-  border: solid 1px #778899;
-  box-shadow: none;
+.header-right ul li a .fa{
+  color: white;
+  font-size: 20px;
 }
-.header-search .search-btn {
-  background-position: 13px 6px;
-  background-image: url(/image/search.png);
-  background-repeat: no-repeat;
-  background-size: 25px 25px;
-  width: 34px;
-  height: 28px;
-  border: none;
-  position: absolute;
-  top: 24px;
-  left: 617px;
-  outline: none;
-  background-color: transparent;
+.dropdown-toggle {
+  color: white;
 }
-/*Search form*/
-
-/*ナビ*/
+.caret {
+  color: white;
+}
+.header-middle {
+  padding-top: 44px;
+}
 .header-right {
-  height: 82px;
+  padding-top: 40px;
 }
-.header-right .pointer:hover {
-  background-color: #fffff0;
-}
-
-.header-right li {
-  line-height: 82px;
-  padding: 0 8px 0 8px;
-  font-size: 13px;
-}
-/*ナビ*/
-
-header:after {
-  content: "";
+/*------sidebar------*/
+.dropdown-menu li {
   display: block;
-  clear: both;
 }
+.sidebar-block {
+  background-color: white;
+  margin-bottom: 5px;
+  padding-top: 10px;
+}
+.sidebar-category {
+  background-image: url(images/icon/arrow.png);
+  background-repeat: no-repeat;
+  background-position:14px 8px;
+  background-size: 20px;
+  height: 20px;
+  padding-bottom: 25px;
+  padding-left: 10px;
+}
+.sidebar-category p{
+  font-size: 14px;
+  padding-top: 1.5px;
+  border-bottom: dashed 1px gray;
+  padding-bottom: 5px;
+}
+
+
+/*------end------*/
+
 /*   HEADER END  */
 
 
-/*モーダル*/
-.signup-modal-wrapper {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 100;
-  display: none;
-}
-.login-modal-wrapper {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 100;
-  display: none;
+/*   flash-message-wrapper START  */
+.flash-message-wrapper {
+  background-color: rgb(252,188,112);
 }
 
-.modal {
-  position: absolute;
-  top: 20%;
-  left: 34%;
-  background-color: #e6ecf0;
-  padding: 20px 0 40px;
-  border-radius: 10px;
-  width: 450px;
-  height: auto;
-  text-align: center;
+.flash_message p {
+  font-size: 22px;
+  margin-top: 10px;
 }
+/*   flash-message-wrapper END  */
 
-.fa-times {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  color: rgba(128, 128, 128, 0.46);
-  cursor: pointer;
-}
 
-#signup-form {
-  width: 100%;
-}
-
-#signup-form h2 {
-  color: #5f5d60;
-  letter-spacing: 1px;
-  margin-bottom: 40px;
-}
-
-#signup-form input {
-  width: 320px;
-  margin-bottom: 20px;
-  font-size: 12px;
-  padding: 12px 12px;
-  border: 1px solid #d0d5d8;
-  border-radius: 5px;
-}
-
-#submit-btn {
-  display: inline-block;
-  padding: 14px 140px;
-  background-color: #5dca88;
-  border: none;
-  border-radius: 3px;
-  color: white;
-  margin: 10px auto;
-  cursor: pointer;
-}
 
 
 /*   footer START  */
@@ -216,10 +132,14 @@ footer {
   text-align: center;
   margin-top: 30px;
   border-top: solid 1px gray;
-  background-color: gray;
+  background-color: rgb(35,47,61);
+  padding-top: 30px;
+  padding-bottom: 20px;
 }
 /*   footer END  */
-
+footer small {
+  color: white;
+}
 
 
 
@@ -283,12 +203,7 @@ form:after {
   display: block;
   clear: both;
 }
-/*form:after {
-  content: "";
-  display: block;
-  clear: both;
-}*/
-/*rating star end*/
+
 
 /*   defaule.blade.php END  */
 
@@ -459,3 +374,32 @@ form:after {
   width: 100px;
 /*  margin: 0 auto;*/
 }
+
+
+/*login*/
+.panel-default {
+  margin-top: 20px;
+}
+/*register*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

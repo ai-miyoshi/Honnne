@@ -25,13 +25,19 @@ $(function() {
       $(this).next().css('display','none');
     }
   });
-
+});
 
   // $('.commentshowup').on("click", function() {
   //   $(this).next().slideToggle();
   // });
 
 
-
+$(function(){
+  $(".slides").webTicker({
+      height:    'px',
+      direction: 'left',
+      hoverpause: false,
+      startEmpty: false,
+      duplicate:true
+  });
 });
-

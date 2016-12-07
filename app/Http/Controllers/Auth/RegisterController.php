@@ -6,6 +6,11 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Item;
+use App\Category;
+use App\Review;
+use View;
+
 
 class RegisterController extends Controller
 {
@@ -37,6 +42,11 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+      // カテゴリ一覧表示
+      View::share('category_all', Category::all());
+      // アイテム一覧表示
+      View::share('item_all', Item::all());
+      View::share('review_all', Review::all());
     }
 
     /**
@@ -68,4 +78,5 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
-}
+
+ }

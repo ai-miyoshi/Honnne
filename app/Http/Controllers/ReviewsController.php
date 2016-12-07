@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Item;
 use App\Review;
 use App\Recommend;
+use App\Category;
+use View;
+use Cookie;
 
 
 class ReviewsController extends Controller
@@ -52,7 +55,14 @@ class ReviewsController extends Controller
         return redirect('/items/'.$request->item_id) ->with('flash_message','参考になったボタンは１回しか押せません');
       }
     }
-
+    
+    public function __construct() {
+      // カテゴリ一覧表示
+      View::share('category_all', Category::all());
+      // アイテム一覧表示
+      View::share('item_all', Item::all());
+      View::share('review_all', Review::all());
+    }
 }
 
 

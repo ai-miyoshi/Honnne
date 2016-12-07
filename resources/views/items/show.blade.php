@@ -2,69 +2,117 @@
 @section('title', 'アイテム詳細')
 
 @section('content')
-<section class="pgae_navi">
-  <ul>
-    <li><a href="/categories">カテゴリ一覧</a></li>
-    <li>&nbsp;>&nbsp;</li>
-    <li><a href="/categories/{{ $category->id }}">{{ $category->name }}</a></li>
-    <li>&nbsp;>&nbsp;</li>
-    <li>{{ $item->name }}</li>
-  </ul>
+
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-12">
+
+      </div>
+    </div><!--row-->
+  </div><!--container-->
 </section>
 
-<section class="item-detail">
-    <ul class="title">
-      <li><h1>{{ $item->name }}</h1></li>
-      <li><p>{{ $item->category->name}}</p></li>
-    </ul>
-
-    <div class="score-review">
-      <div class="wrap">
-        <span class="rate rate{{ $average }}"></span>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-12">
+        <ul class="page-navi">
+          <li><a href="/categories">カテゴリ一覧</a></li>
+          <li>&nbsp;>&nbsp;</li>
+          <li><a href="/categories/{{ $category->id }}">{{ $category->name }}</a></li>
+          <li>&nbsp;>&nbsp;</li>
+          <li>{{ $item->name }}</li>
+        </ul>
       </div>
-      <ul class="number">
-        <li><p>&nbsp;{{ $average }}<p></li>
-        <li class="review"><p><i class="fa fa-commenting" aria-hidden="true"></i>&nbsp;{{ $review_number }}件<p></li>
-      <!--   @if (Auth::guest())
-          <p class="pointer login-show">レビューを投稿する</p>
-        @else
-          <li class="add-review"><p>レビューを投稿する<p></li>
-        @endif -->
-      </ul>
-    </div>
-    <div class="image-info">
-      <img src="/image/{{ $item->image }}" alt="..." class="image">
-      <h3>{{ $item->name }}</h3>
-      <p>{{ $item->info }}</p>
-    </div>
+    </div><!--row-->
+  </div><!--container-->
+</section>
+
+
+<section class="item-detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-12">
+
+        <ul class="title">
+          <li><h1>{{ $item->name }}</h1></li>
+          <li><p><a href="/categories/{{ $category->id }}">{{ $item->category->name}}</a></p></li>
+        </ul>
+
+        <div class="score-review">
+          <div class="wrap">
+            <span class="rate rate{{ $average }}"></span>
+          </div>
+          <ul class="number">
+            <li><p>&nbsp;{{ $average }}<p></li>
+            <li class="review"><p><i class="fa fa-commenting" aria-hidden="true"></i>&nbsp;{{ $review_number }}件<p></li>
+          </ul>
+        </div>
+
+        <div class="image-info">
+          <img src="/image/{{ $item->image }}" alt="..." class="image">
+          <h3>{{ $item->name }}</h3>
+          <p>{{ $item->info }}</p>
+        </div>
+
+          </div>
+    </div><!--row-->
+  </div><!--container-->
 </section>
 
 
 
 <section>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-12">
+
   @if (Auth::guest())
-   <p class="pointer login-show">レビューを投稿する</p>
+    <a href="{{ url('/login') }}" class="btn btn-warning btn-lg btn-block">レビューを投稿する</a>
   @else
-    <li class="add-review"><p>レビューを投稿する<p></li>
-    <form method="post" action="/reviews" class="">
+  <h4 class="add-review-form-title">レビューの投稿</h4>
+    <form method="post" action="/reviews" class="form-horizontal add-review-form">
       <!--クロス・サイト・リクエスト・フォージェリ対策 -->
       {{ csrf_field() }}
+
+      <div class="form-group">
+        <label for="review-score-boot" class="col-sm-2 control-label">評価</label>
+        <div class="col-sm-10">
+          <fieldset class="rating" id="review-score-boot">
+            <!-- <legend></legend> -->
+              <input type="radio" id="star5" name="score" value="5" class="star" /><label for="star5"></label>
+              <input type="radio" id="star4" name="score" value="4" /><label for="star4"></label>
+              <input type="radio" id="star3" name="score" value="3" /><label for="star3"></label>
+              <input type="radio" id="star2" name="score" value="2" /><label for="star2"></label>
+              <input type="radio" id="star1" name="score" value="1" /><label for="star1"></label>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="review-title-boot" class="col-sm-2 control-label">タイトル</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="" name="reviewtitle" value="{{ old('title') }}" id="review-title-boot">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="review-body-boot" class="col-sm-2 control-label">レビュー内容</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" rows="3" name="reviewbody" value="{{ old('body') }}" id="review-body-boot"></textarea>
+        </div>
+      </div>
+
       <input type="hidden" name="item_id" value="{{ $item->id }}">
       <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-      <label>タイトル</label>
-      <input type="text" name="reviewtitle" value="{{ old('title') }}"class="">
-      <label>レビュー</label>
-      <input type="textarea" name="reviewbody" value="{{ old('body') }}" class="">
-      <label>評価</label>
-      <fieldset class="rating">
-        <!-- <legend></legend> -->
-          <input type="radio" id="star5" name="score" value="5" class="star" /><label for="star5"></label>
-          <input type="radio" id="star4" name="score" value="4" /><label for="star4"></label>
-          <input type="radio" id="star3" name="score" value="3" /><label for="star3"></label>
-          <input type="radio" id="star2" name="score" value="2" /><label for="star2"></label>
-          <input type="radio" id="star1" name="score" value="1" /><label for="star1"></label>
-      </fieldset>
-      <input type="submit" value="投稿" class="">
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default">投稿</button>
+        </div>
+      </div>
     </form>
 
     <!-- バリデーションエラーの表示 -->
@@ -80,10 +128,18 @@
     <!-- エラーの表示 -->
 
   @endif
+
+          </div>
+    </div><!--row-->
+  </div><!--container-->
 </section>
 
 <section><!-- レビューの表示 -->
-  <h3>ユーザーレビュー</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-12">
+
+   <h3>ユーザーレビュー</h3>
   @forelse ($reviews as $review)<!-- レビューの取り出しstart -->
     <div class="user-review">
       <ul >
@@ -100,10 +156,10 @@
       </ul>
         <p>{{ $review->body }}</p>
 
-
+        <p>{{ count($review->recommend) }}人がレビューが参考になったと言っています。</p>
         <p class="evaluation">このレビューは参考になりましたか？</p>
         @if (Auth::guest())
-        <p class="pointer login-show">はい</p>
+          <a href="{{ url('/login') }}">はい</a>
         @else
         <form method="post" action="/items/{{ $review->item_id }}" class="">
           {{ csrf_field() }}
@@ -113,8 +169,6 @@
           <input type="submit" value="はい" class="">
         </form>
         @endif
-
-        レビューが参考になった（{{ count($review->recommend) }}）
       </div>
 
     <div class="review-comments">
@@ -136,7 +190,7 @@
 
         <div class="comment-add">
           @if (Auth::guest()) <!--ログイン判定start ログインしていない-->
-            <p class="pointer login-show">コメントを投稿する</p>
+            <a href="{{ url('/login') }}">レビューを投稿する</a>
           @else <!--ログインしている-->
             <form method="post" action="/comment" class="">
               {{ csrf_field() }} <!--クロス・サイト・リクエスト・フォージェリ対策 -->
@@ -166,7 +220,7 @@
         <p>コメントを投稿しましょう！</p>
         <div class="comment-add">
           @if (Auth::guest()) <!--ログイン判定start ログインしていない-->
-            <p class="pointer login-show">コメントを投稿する</p>
+            <a href="{{ url('/login') }}">コメントを投稿する</a>
           @else <!--ログインしている-->
             <form method="post" action="/comment" class="">
               {{ csrf_field() }} <!--クロス・サイト・リクエスト・フォージェリ対策 -->
@@ -203,6 +257,10 @@
      <li class="add-review"><p>レビューを投稿する<p></li>
    </ul>
   @endforelse<!-- レビューの取り出しend-->
+
+      </div>
+    </div><!--row-->
+  </div><!--container-->
 </section>
 
 

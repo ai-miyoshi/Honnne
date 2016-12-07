@@ -1,53 +1,45 @@
 /*   category index.blade.php START  */
-.category-box {
-  border: solid 1px blue;
-  width: 70%;
-  float: left;
-}
-.category-boxs {
-  text-align: center;
-}
-.category-boxs a {
-  width: 240px;
-  height: 70px;
-  margin: 0 10px 10px 0;
-  padding: 0;
-  float: left;
-  border: solid 1px gray;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-}
-.category-boxs ul::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.category-box-image {
-  float: left;
-  margin: 10px;
-}
-.category-box-name {
-  font-size: 16px;
-}
-.category_box:after {
-  content: "";
-  display: block;
-  clear: both;
+
+.top-wrapper {
+  height:400px;
+  background-image: url(/image/top.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
 }
 
-.category-sidebar {
-  width: 340px;
+/*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
+
+.middle-inner-wrappew {
+  background-color: rgb(246,246,245);
+  border-radius: 10px;
+  margin: 10px 10px  10px 10px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+.category-sidebar h2 {
+  text-align: center;
 }
 .category-sidebar ul {
-  border: solid 1px gray;
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  padding-left: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.category-sidebar li {
+  border-bottom:solid 1px #c0c0c0;
+  counter-increment:rank;
+  width:500px;
 }
 .category-sidebar p {
-  font-size: 16px;
+  font-size: 20px;
+  padding:0;
+  margin:0;
+}
+.rank-bold {
+  font-weight: bold;
+  font-size: 30px;
 }
 .lank-title {
   margin-bottom: 10px;
@@ -55,9 +47,9 @@
   font-size: 15px;
 }
 
-
-.category-sidebar li{
-  counter-increment:rank;
+.sidebar-lank p {
+  padding-left: 30px;
+  margin-top:10px;
 }
 .sidebar-lank p::before {
   content:"第" counter(rank) "位";
@@ -65,8 +57,11 @@
 
 .category-sidebar li {
   background-repeat: no-repeat;
-  background-size: 40px 30px;
-  background-position: 2px 0px;
+  background-size: 52px 37px;
+  background-position: 30px 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 80px;
 }
 .category-sidebar li:nth-child(1) {
   background-image: url("/image/first.jpg");
@@ -78,6 +73,15 @@
   background-image: url("/image/third.jpg");
 }
 
+.categories-wrap {
+  float: left;
+  margin-top: 10px;
+}
+.averagescore-caategories {
+  line-height: 20px;
+  font-size: 20px;
+  margin-top: 10px;
+}
 
 .sidebar-lank p {
   padding-top: 27px;
@@ -87,16 +91,62 @@
 }
 .lank-box-image {
   float: left;
-  padding-left: 20px;
-  padding-right: 15px;
-  max-width: 85px;
-  max-height: 50px;
+  padding-left: 30px;
+  padding-right: 10px;
+  max-width: 200px;
+  max-height: 70px;
+}
+
+/*slider start*/
+.slider-title {
+  border-top:solid 1px #c0c0c0;
+  border-bottom:solid 1px #c0c0c0;
+  margin: 10px 0 10px 0;
+  padding:20px 0 0px 0;
+}
+.slider-items {
+  width: 200px;
+}
+.slider-items p {
+  font-size: 15px;
+}
+.slider-image {
+  max-width: 200px;
+  max-height: 70px;
 }
 
 
-section:after {
-  content: "";
-  display: block;
-  clear: both;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*slider end*/
+
 /*   ctegory index.blade.php END  */
