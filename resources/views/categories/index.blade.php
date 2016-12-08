@@ -16,7 +16,7 @@
     <div class="row">
       <div class="col-xs-12 col-lg-4 review-rank category-sidebar">
         <div class="middle-inner-wrappew">
-          <h2>HOTな製品</h2>
+          <h2>レビューの多い製品</h2>
           <ul>
           @foreach ($review_amount as $amount)
             <li>
@@ -36,7 +36,7 @@
 
       <div class="col-xs-12 col-lg-4 category-sidebar">
         <div class="middle-inner-wrappew">
-          <h2>高評価ランキング</h2>
+          <h2>おすすめ製品</h2>
           <ul>
           @foreach ($scorerank as $rank)
             <li class="reviewrank">
@@ -59,7 +59,7 @@
 
       <div class="col-xs-12 col-lg-4 category-sidebar">
         <div class="middle-inner-wrappew">
-          <h2>ランダム</h2>
+          <h2>新着レビュー</h2>
           <ul>
           @foreach ($scorerank as $rank)
             <li class="">

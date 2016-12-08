@@ -56,20 +56,31 @@
   border-left: solid 5px orange;
   margin-left: 15px;
   position: relative;
-  margin: 10px 0px 10px 19px;
+  margin: 10px 0px 30px 19px;
   padding-left: 10px;
 }
 .user-review .title {
-  position: absolute;
-   top: -2px;
-   left: 116px;
+    position: absolute;
+    top: -4px;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 13px;
 }
-
-.user-review .evaluation {
-  font-size: 12px;
-  padding-left: 50px;
+.review-body-deco {
+  font-size: 20px;
+  padding-bottom: 5px;
 }
-
+.commentshowup {
+  margin-right: 10px;
+  padding-right: 5px;
+  color: #191970;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.comment-show-body {
+  margin-bottom: 10px;
+  border-left: solid 5px #ffdab9;
+}
 
 .review-empty {
   padding-bottom: 5px;
@@ -82,38 +93,56 @@
 .review-comments .comment-body {
   margin-left: 23px;
   padding-left: 10px;
-  border-left: solid 5px #ffdab9;
-
+  width: 800px;
 }
 .comment-body {
-/*  border-bottom: solid 1px gray;*/
-  width: 500px;
+
   margin-bottom: 10px
 }
 .create-comment {
   padding-left: 30px;
   margin-bottom: 10px;
 }
-
-
 .comment-body {
   display: none;
 }
-
+.comment-body-style {
+  font-size: 18px;
+}
 /*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
 .add-review-form {
 border-bottom: dashed 1px #d3d3d3;
 }
 .add-review-form-title {
-padding-left: 20px;
-border-top: dashed 1px #d3d3d3;
-padding-top: 10px;
+  padding-left: 20px;
+  border-top: dashed 1px #d3d3d3;
+  padding-top: 10px;
+}
+.review-valid-error {
+  background-color: orange;
+  margin-left: 198px;
+  margin-bottom: 10px;
+  width: 301px;
+}
+.review-name-color {
+  color: rgb(34,47,61);;
+  font-weight: bold;
 }
 
+.comment-btn-position {
+  margin-top: -5px;
+  margin-left: 13px;
+}
+.comment-add-form {
+  border-top:dashed 1px gray;
+  margin-top:20px;
+  padding-top:10px;
+}
+.comment-forms {
+  border-bottom:dashed 1px gray;
+  padding-bottom: 20px;
 
-
-
-
+}
 
 
 

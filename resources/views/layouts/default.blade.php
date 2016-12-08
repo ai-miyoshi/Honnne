@@ -10,11 +10,12 @@
   <!-- タイトル -->
   <title>@yield('title')</title>
   <!-- スタイルシート -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/default.css">
   <link rel="stylesheet" href="/css/category_index.css">
   <link rel="stylesheet" href="/css/items_index.css">
   <link rel="stylesheet" href="/css/items_show.css">
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
+
 
 
 
@@ -32,11 +33,10 @@
 <body>
 
 <header>
-  <div class="container">
     <div class="row">
 
-      <div class="col-xs-4 col-lg-4 header-left">
-        <a href="/categories" class="header-logo" ><h1 class="top">歯医者の本音</h1></a>
+      <div class="col-xs-4 col-lg-3 header-left">
+        <a href="/categories"><img src="/image/logo.png" alt="..." class="header-logo"></a>
         <div>
           <ul class="nav nav-pills" role="tablist">
             <li role="presentation" class="dropdown">
@@ -57,13 +57,13 @@
         </div>
       </div>
 
-      <div class="col-xs-4 col-lg-4 header-middle">
+      <div class="col-xs-4 col-lg-5 header-middle">
         <div class="input-group">
           <form method="post" action="/search" >
           {{ csrf_field() }}
-            <span class="input-group-btn">
+            <span class="input-group-btn search-form-width">
               <input type="text" class="form-control" name="search"  placeholder="Search" value="{{ $keyword or "" }}">
-              <button class="btn btn-default" type="submit">
+              <button class="btn btn-default btn-search" type="submit">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
             </span>
@@ -98,7 +98,6 @@
       </div>
 
     </div><!--row-->
-  </div><!--container-->
 </header>
 
 <section class="flash-message-wrapper">
